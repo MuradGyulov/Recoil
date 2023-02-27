@@ -7,15 +7,11 @@ public class UserInterface : MonoBehaviour
 {
     private static UserInterface userInterfaceInstance;
 
-    [SerializeField] GameObject canvasBackground;
-    [Space(15)]
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject levelsMenu;
-    [SerializeField] private GameObject shopMenu;
-    [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject gameMenu;
     [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private GameObject deadMenu;
+    [SerializeField] private GameObject defeatMenu;
 
 
     private void Start()
@@ -39,18 +35,6 @@ public class UserInterface : MonoBehaviour
         GetObjectComponent(levelsMenu).SetTrigger("ShowMenu");
     }
 
-    public void btn_ShopButton() 
-    {
-        GetObjectComponent(mainMenu).SetTrigger("HideMenu");
-        GetObjectComponent(shopMenu).SetTrigger("ShowMenu");
-    }
-
-    public void btn_Settings()
-    {
-        GetObjectComponent(mainMenu).SetTrigger("HideMenu");
-        GetObjectComponent(settingsMenu).SetTrigger("ShowMenu");
-    }
-
     public void btn_AllGames()
     {
         //Open confirmation menu;
@@ -72,25 +56,8 @@ public class UserInterface : MonoBehaviour
     public void btn_LoadLevel(int levelIndex)
     {
         SceneManager.LoadScene(levelIndex);
-        canvasBackground.SetActive(false);
         GetObjectComponent(levelsMenu).SetTrigger("HideMenu");
         GetObjectComponent(gameMenu).SetTrigger("ShowMenu");
-    }
-    #endregion
-
-    #region ShopMenu
-    public void btn_ExitShop()
-    {
-        GetObjectComponent(shopMenu).SetTrigger("HideMenu");
-        GetObjectComponent(mainMenu).SetTrigger("ShowMenu");
-    }
-    #endregion
-
-    #region SettingsMenu
-    public void btn_ExitSettings()
-    {
-        GetObjectComponent(settingsMenu).SetTrigger("HideMenu");
-        GetObjectComponent(mainMenu).SetTrigger("ShowMenu");
     }
     #endregion
 
@@ -117,7 +84,6 @@ public class UserInterface : MonoBehaviour
 
     public void btn_Home()
     {
-        canvasBackground.SetActive(true);
         GetObjectComponent(pauseMenu).SetTrigger("HideMenu");
         GetObjectComponent(mainMenu).SetTrigger("ShowMenu");
     }
@@ -141,14 +107,13 @@ public class UserInterface : MonoBehaviour
     #region DeadMenu
     public void btn_RestartDead()
     {
-        GetObjectComponent(deadMenu).SetTrigger("HideMenu");
+        GetObjectComponent(defeatMenu).SetTrigger("HideMenu");
         GetObjectComponent(gameMenu).SetTrigger("ShowMenu");
     }
 
     public void btn_HomeDead()
     {
-        canvasBackground.SetActive(true);
-        GetObjectComponent(deadMenu).SetTrigger("HideMenu");
+        GetObjectComponent(defeatMenu).SetTrigger("HideMenu");
         GetObjectComponent(mainMenu).SetTrigger("ShowMenu");
     }
     #endregion

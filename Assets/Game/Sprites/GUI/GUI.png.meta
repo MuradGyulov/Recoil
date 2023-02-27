@@ -122,7 +122,7 @@ TextureImporter:
         serializedVersion: 2
         x: 1
         y: 375
-        width: 40
+        width: 35
         height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -141,10 +141,10 @@ TextureImporter:
       name: Small Button
       rect:
         serializedVersion: 2
-        x: 42
-        y: 382
+        x: 37
+        y: 383
         width: 15
-        height: 16
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,10 +204,10 @@ TextureImporter:
       name: Play Icon
       rect:
         serializedVersion: 2
-        x: 1
-        y: 351
-        width: 11
-        height: 17
+        x: 0
+        y: 352
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,10 +225,10 @@ TextureImporter:
       name: Restart Icon
       rect:
         serializedVersion: 2
-        x: 13
-        y: 351
+        x: 64
+        y: 352
         width: 18
-        height: 17
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,10 +246,10 @@ TextureImporter:
       name: Home Icon
       rect:
         serializedVersion: 2
-        x: 32
-        y: 351
-        width: 17
-        height: 17
+        x: 48
+        y: 352
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -330,10 +330,10 @@ TextureImporter:
       name: Settings Icon
       rect:
         serializedVersion: 2
-        x: 50
-        y: 353
-        width: 15
-        height: 15
+        x: 16
+        y: 352
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -351,10 +351,10 @@ TextureImporter:
       name: Games Icon
       rect:
         serializedVersion: 2
-        x: 66
-        y: 353
-        width: 17
-        height: 15
+        x: 32
+        y: 352
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -415,9 +415,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 177
-        y: 360
-        width: 11
-        height: 8
+        y: 358
+        width: 13
+        height: 10
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -427,6 +427,48 @@ TextureImporter:
       bones: []
       spriteID: e943f9bed29ad404bb129a7c554ad942
       internalID: -1157647791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Panel
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 27
+        width: 108
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81b2da3380f157f41aabcbe812e4194f
+      internalID: -1645853380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Whide Button
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 383
+        width: 85
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d190bcb25a81ca24b93bd4e2ea7edcae
+      internalID: -1785302299
       vertices: []
       indices: 
       edges: []
@@ -448,6 +490,7 @@ TextureImporter:
       Huge Button: 243336129
       Menu: 2000181117
       Music Icon: -165917686
+      Panel: -1645853380
       Pause Icon: 806940628
       Play Icon: 1263100015
       Restart Icon: -2125790134
@@ -459,6 +502,7 @@ TextureImporter:
       Sounds Icon: -593756674
       Sounds ON: 1761159153
       Video Icon: -1930820462
+      Whide Button: 799005815
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
