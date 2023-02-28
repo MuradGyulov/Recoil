@@ -12,8 +12,12 @@ public class UserInterface : MonoBehaviour
     [SerializeField] private GameObject gameMenu;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject defeatMenu;
+    [SerializeField] private GameObject successMenu;
 
-
+    private void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.T)) { SceneManager.LoadScene(1); }
+    }
     private void Start()
     {
         DontDestroyOnLoad(this);
@@ -38,11 +42,6 @@ public class UserInterface : MonoBehaviour
     public void btn_AllGames()
     {
         //Open confirmation menu;
-    }
-
-    public  void btn_RateGame()
-    {
-        //Rate the game;
     }
     #endregion
 
@@ -114,6 +113,26 @@ public class UserInterface : MonoBehaviour
     public void btn_HomeDead()
     {
         GetObjectComponent(defeatMenu).SetTrigger("HideMenu");
+        GetObjectComponent(mainMenu).SetTrigger("ShowMenu");
+    }
+    #endregion
+
+    #region SuccessMenu
+    public void btn_NextLevelSuccess()
+    {
+        GetObjectComponent(successMenu).SetTrigger("HideMenu");
+        GetObjectComponent(gameMenu).SetTrigger("ShowMenu");
+    }
+
+    public void btn_RestartSuccess()
+    {
+        GetObjectComponent(successMenu).SetTrigger("HideMenu");
+        GetObjectComponent(gameMenu).SetTrigger("ShowMenu");
+    }
+
+    public void btn_HomeSuccess()
+    {
+        GetObjectComponent(successMenu).SetTrigger("HideMenu");
         GetObjectComponent(mainMenu).SetTrigger("ShowMenu");
     }
     #endregion
