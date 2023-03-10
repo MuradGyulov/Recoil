@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private DataBase dataBase;
+
     private Weapon weapon;
+    private ParticlesPool particlesPool;
     private Rigidbody rigidBody;
+    private AudioSource audioSource;
 
     private bool gameStarted;
     private bool playerInAir;
@@ -19,7 +23,9 @@ public class Player : MonoBehaviour
     {
         desctop = true; // Yandex game enviroment data user device
         weapon = transform.GetChild(0).gameObject.GetComponent<Weapon>();
+        particlesPool = GetComponent<ParticlesPool>();
         rigidBody = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void StartGame()
@@ -61,6 +67,17 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         playerInAir = false;
+
+        audioSource.volume = collision.impulse.magnitude * 0.1f;
+        audioSource.PlayOneShot(dataBase.floor);
+
+        ContactPoint contactPoint = collision.contacts[0];
+
+        GameObject ps = particlesPool.GetPooledParticle();
+        ps.SetActive(true);
+        ps.transform.position = contactPoint.point;
+        ParticleSystem dustPS = ps.GetComponent<ParticleSystem>();
+        dustPS.Play();
     }
 
     private void OnCollisionExit(Collision collision)

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -17,6 +18,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private DataBase dataBase;
     [SerializeField] private Transform shootPoint;
     [SerializeField] private BulletsPool bulletsPool;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private Rigidbody playerRigidBody;
     [SerializeField] private Animator shootinAnimation;
 
@@ -35,6 +37,7 @@ public class Weapon : MonoBehaviour
             bullet.transform.rotation = shootPoint.rotation;
 
             shootinAnimation.SetTrigger("Shoot");
+            audioSource.PlayOneShot(dataBase.assaultRifleShootingSound);
             bullet.SetActive(true);
             GunRecoil();
         }
