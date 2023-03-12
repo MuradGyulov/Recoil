@@ -13,16 +13,23 @@ public class Weapon : MonoBehaviour
     }
     [SerializeField] private WeaponSelection weaponSelection;
 
-    [Space(20)]
-
-    [SerializeField] private DataBase dataBase;
-    [SerializeField] private Transform shootPoint;
-    [SerializeField] private BulletsPool bulletsPool;
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private Rigidbody playerRigidBody;
-    [SerializeField] private Animator shootinAnimation;
+    private DataBase dataBase;
+    private Transform shootPoint;
+    private BulletPool bulletPool;
+    private AudioSource audioSource;
+    private Animator shootinAnimation;
 
     private float nextFire;
+
+    private void Start()
+    {
+        audioSource= GetComponent<AudioSource>();
+        shootinAnimation= GetComponent<Animator>();
+
+        dataBase = Resources.Load("GameDataBase", typeof(ScriptableObject)) as DataBase;
+        bulletPool = GameObject.FindGameObjectWithTag("BulletPool").GetComponent<BulletPool>();
+        shootPoint = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Transform>();
+    }
 
     public void Shooting()
     {
@@ -30,21 +37,15 @@ public class Weapon : MonoBehaviour
         {
             nextFire = Time.time + dataBase.fireRate;
 
-            GameObject bullet = bulletsPool.GetPooledBullet();
+            GameObject bullet = bulletPool.GetPooledBullet();
             shootPoint.transform.localEulerAngles = new Vector3(0, 0, Random.Range(dataBase.spread, -dataBase.spread));
 
-            bullet.transform.position = shootPoint.position;
-            bullet.transform.rotation = shootPoint.rotation;
+            bullet.transform.position = shootPoint.transform.position;
+            bullet.transform.rotation = shootPoint.transform.rotation;
+            bullet.SetActive(true);
 
             shootinAnimation.SetTrigger("Shoot");
             audioSource.PlayOneShot(dataBase.assaultRifleShootingSound);
-            bullet.SetActive(true);
-            GunRecoil();
         }
-    }
-
-    private void GunRecoil()
-    {
-        playerRigidBody.AddForce(transform.right * -dataBase.recoil, ForceMode.Impulse);
     }
 }

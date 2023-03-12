@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
     {
         boxCollider.enabled = true;
         meshRenderer.enabled = true;
-        rigidBody.AddForce(transform.right * bulletSpeed, ForceMode.Impulse);
+        rigidBody.AddForce(transform.right * bulletSpeed);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,13 +24,14 @@ public class Bullet : MonoBehaviour
             boxCollider.enabled = false;
             meshRenderer.enabled = false;
             collisionParticles.Play();
-            Invoke("DeactivateTheBullet", 0.26f);
+            Invoke("DeactivateTheBullet", collisionParticles.main.duration);
         }
     }
 
     private void DeactivateTheBullet()
     {
         transform.position = new Vector3(0, 0, 0);
+        transform.eulerAngles= Vector3.zero;
         gameObject.SetActive(false);
     }
 }

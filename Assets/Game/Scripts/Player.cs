@@ -5,32 +5,41 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private DataBase dataBase;
-
     private Weapon weapon;
-    private ParticlesPool particlesPool;
+    private DataBase dataBase;
     private Rigidbody rigidBody;
     private AudioSource audioSource;
+    private ParticlePool particlePool;
 
-    private bool gameStarted;
-    private bool playerInAir;
-    private bool desctop;
-    private bool mobile;
     private bool tv;
+    private bool mobile;
+    private bool desctop;
+    private bool playerOnTheGround;
+    private bool characterIsActivated;
 
 
     private void Start()
     {
-        desctop = true; // Yandex game enviroment data user device
+        dataBase = Resources.Load("GameDataBase", typeof(ScriptableObject)) as DataBase;
+
         weapon = transform.GetChild(0).gameObject.GetComponent<Weapon>();
-        particlesPool = GetComponent<ParticlesPool>();
+        particlePool = GameObject.FindGameObjectWithTag("ParticlePool").gameObject.GetComponent<ParticlePool>();
+
         rigidBody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+
+
+        desctop = true;
     }
 
-    private void StartGame()
+    public void Activate_AND_DeactivateCharacter()
     {
-        gameStarted = true;
+        if (characterIsActivated) {
+            characterIsActivated = false;
+        }
+        else if(!characterIsActivated) {
+            characterIsActivated = true;
+        }
     }
 
 
@@ -42,46 +51,57 @@ public class Player : MonoBehaviour
             {
                 weapon.Shooting();
                 StopRotation();
+                GunRecoil();
             }
             else if (mobile && Input.touchCount > 0)
             {
                 weapon.Shooting();
                 StopRotation();
+                GunRecoil();
             }
             else if (tv)
             {
                 weapon.Shooting();
                 StopRotation();
+                GunRecoil();
             }
         }
     }
 
     private void StopRotation()
     {
-        if (playerInAir)
+        if (!playerOnTheGround)
         {
             rigidBody.angularVelocity = Vector3.zero;
         }
     }
 
+    private void GunRecoil()
+    {
+        rigidBody.AddForce(-transform.right * dataBase.recoil, ForceMode.Impulse);
+
+        if (playerOnTheGround)
+        {
+            rigidBody.AddTorque(-transform.forward * Random.Range(-dataBase.angularRecoil, dataBase.angularRecoil), ForceMode.Impulse);
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        playerInAir = false;
+        playerOnTheGround = true;
 
         audioSource.volume = collision.impulse.magnitude * 0.1f;
         audioSource.PlayOneShot(dataBase.floor);
 
         ContactPoint contactPoint = collision.contacts[0];
-
-        GameObject ps = particlesPool.GetPooledParticle();
-        ps.SetActive(true);
+        GameObject ps = particlePool.GetPooledParticle();
         ps.transform.position = contactPoint.point;
-        ParticleSystem dustPS = ps.GetComponent<ParticleSystem>();
-        dustPS.Play();
+        ps.SetActive(true);
+
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        playerInAir = true;
+        playerOnTheGround = false;
     }
 }
