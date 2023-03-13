@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 8300000, guid: f26190accf1a0374cabb5ee5c94b3721, type: 3}
   spread: 2
-  recoil: 0.122
-  angularRecoil: 0.5
+  recoil: 0.5
+  angularRecoil: 0.4
   fireRate: 0.1
   assaultRifleShootingSound: {fileID: 8300000, guid: a092b3fc4124f544baa6f92c19660208, type: 3}

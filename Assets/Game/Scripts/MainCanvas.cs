@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 using UnityEngine;
 
 public class MainCanvas : MonoBehaviour
@@ -14,10 +15,12 @@ public class MainCanvas : MonoBehaviour
     [SerializeField] private GameObject defeatMenu;
     [SerializeField] private GameObject successMenu;
 
-    private void Update()
-    {
-        if(Input.GetKeyUp(KeyCode.T)) { SceneManager.LoadScene(1); }
-    }
+    private int levelToLoad;
+
+    public static UnityEvent pauseGame = new UnityEvent();
+    public static UnityEvent continueGame = new UnityEvent();
+
+
     private void Start()
     {
         DontDestroyOnLoad(this);
@@ -54,9 +57,19 @@ public class MainCanvas : MonoBehaviour
 
     public void btn_LoadLevel(int levelIndex)
     {
-        SceneManager.LoadScene(levelIndex);
-        GetObjectComponent(levelsMenu).SetTrigger("HideMenu");
-        GetObjectComponent(gameMenu).SetTrigger("ShowMenu");
+        StartCoroutine(LoadLevelAsync(levelIndex));
+    }
+
+    public IEnumerator LoadLevelAsync(int index )
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(index);
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+            GetObjectComponent(levelsMenu).SetTrigger("HideMenu");
+            GetObjectComponent(gameMenu).SetTrigger("ShowMenu");
+        }
     }
     #endregion
 
@@ -65,6 +78,7 @@ public class MainCanvas : MonoBehaviour
     {
         GetObjectComponent(gameMenu).SetTrigger("HideMenu");
         GetObjectComponent(pauseMenu).SetTrigger("ShowMenu");
+        pauseGame.Invoke();
     }
     #endregion
 
@@ -73,18 +87,42 @@ public class MainCanvas : MonoBehaviour
     {
         GetObjectComponent(pauseMenu).SetTrigger("HideMenu");
         GetObjectComponent(gameMenu).SetTrigger("ShowMenu");
+
+        continueGame.Invoke();
     }
 
     public void btn_Restart()
     {
-        GetObjectComponent(pauseMenu).SetTrigger("HideMenu");
-        GetObjectComponent(gameMenu).SetTrigger("ShowMenu");
+        StartCoroutine(RestartLevelAsinc());
+    }
+
+    public IEnumerator RestartLevelAsinc()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+            GetObjectComponent(pauseMenu).SetTrigger("HideMenu");
+            GetObjectComponent(gameMenu).SetTrigger("ShowMenu");
+        }
     }
 
     public void btn_Home()
     {
-        GetObjectComponent(pauseMenu).SetTrigger("HideMenu");
-        GetObjectComponent(mainMenu).SetTrigger("ShowMenu");
+        StartCoroutine(LoadHomeAsync());
+    }
+
+    public IEnumerator LoadHomeAsync()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(0);
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+            GetObjectComponent(pauseMenu).SetTrigger("HideMenu");
+            GetObjectComponent(mainMenu).SetTrigger("ShowMenu");
+        }
     }
 
     public void btn_Sounds()
@@ -112,8 +150,19 @@ public class MainCanvas : MonoBehaviour
 
     public void btn_HomeDead()
     {
-        GetObjectComponent(defeatMenu).SetTrigger("HideMenu");
-        GetObjectComponent(mainMenu).SetTrigger("ShowMenu");
+        StartCoroutine(DeadHomeAsync());
+    }
+
+    public IEnumerator DeadHomeAsync()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(0);
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+            GetObjectComponent(defeatMenu).SetTrigger("HideMenu");
+            GetObjectComponent(mainMenu).SetTrigger("ShowMenu");
+        }
     }
     #endregion
 
@@ -132,8 +181,19 @@ public class MainCanvas : MonoBehaviour
 
     public void btn_HomeSuccess()
     {
-        GetObjectComponent(successMenu).SetTrigger("HideMenu");
-        GetObjectComponent(mainMenu).SetTrigger("ShowMenu");
+        StartCoroutine(SuccessLevelAsync());
+    }
+
+    public IEnumerator SuccessLevelAsync()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(0);
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+            GetObjectComponent(successMenu).SetTrigger("HideMenu");
+            GetObjectComponent(mainMenu).SetTrigger("ShowMenu");
+        }
     }
     #endregion
 

@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private bool tv;
     private bool mobile;
     private bool desctop;
+    private bool gameStarted = true;
     private bool playerOnTheGround;
     private bool characterIsActivated;
 
@@ -30,22 +31,14 @@ public class Player : MonoBehaviour
 
 
         desctop = true;
+
+        MainCanvas.pauseGame.AddListener(PauseGame);
+        MainCanvas.continueGame.AddListener(ContinueGame);
     }
 
-    public void Activate_AND_DeactivateCharacter()
+    private void FixedUpdate()
     {
-        if (characterIsActivated) {
-            characterIsActivated = false;
-        }
-        else if(!characterIsActivated) {
-            characterIsActivated = true;
-        }
-    }
-
-
-    private void Update()
-    {
-        if (true) // if game started
+        if (gameStarted)
         {
             if (desctop && Input.GetMouseButton(0))
             {
@@ -66,6 +59,18 @@ public class Player : MonoBehaviour
                 GunRecoil();
             }
         }
+    }
+
+    private void PauseGame()
+    {
+        gameStarted = false;
+        rigidBody.isKinematic = true;
+    }
+
+    private void ContinueGame()
+    {
+        gameStarted = true;
+        rigidBody.isKinematic = false;
     }
 
     private void StopRotation()
