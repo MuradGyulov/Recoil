@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4f2dd11393edb4f8f9864c5e6ca4e5, type: 3}
+  m_Name: GameDataBase
+  m_EditorClassIdentifier: 
+  floor: {fileID: 8300000, guid: f26190accf1a0374cabb5ee5c94b3721, type: 3}
+  spread: 2
+  recoil: 3.3
+  angularRecoil: 3.8
+  fireRate: 0.15
+  assaultRifleShootingSound: {fileID: 8300000, guid: a092b3fc4124f544baa6f92c19660208, type: 3}
