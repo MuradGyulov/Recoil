@@ -8026,6 +8026,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5391187392332583192}
     m_Modifications:
+    - target: {fileID: -8364477833892905250, guid: f3425a365a2003b4ba7108a232592c5c, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 221f52c05aa2aa547acfc3707567b87f, type: 3}
+    - target: {fileID: -8364477833892905250, guid: f3425a365a2003b4ba7108a232592c5c, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2371233626302874994, guid: f3425a365a2003b4ba7108a232592c5c, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: daa06ada4e7bdb946b76e73012dfd1ab, type: 3}
+    - target: {fileID: -2371233626302874994, guid: f3425a365a2003b4ba7108a232592c5c, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 273181257260365647, guid: f3425a365a2003b4ba7108a232592c5c, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -366,26 +366,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3191527528992516453, guid: 68680ff91997ba44098c20bf9600abbe, type: 3}
-      propertyPath: boxCollider
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3191527528992516453, guid: 68680ff91997ba44098c20bf9600abbe, type: 3}
-      propertyPath: meshRendere
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3191527528992516453, guid: 68680ff91997ba44098c20bf9600abbe, type: 3}
-      propertyPath: bangAudioSource
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3191527528992516453, guid: 68680ff91997ba44098c20bf9600abbe, type: 3}
-      propertyPath: piecesParticles
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3191527528992516453, guid: 68680ff91997ba44098c20bf9600abbe, type: 3}
-      propertyPath: creakAudioSource
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4840501333480410649, guid: 68680ff91997ba44098c20bf9600abbe, type: 3}
       propertyPath: m_RootOrder
       value: 0
