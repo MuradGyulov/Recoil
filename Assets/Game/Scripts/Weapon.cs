@@ -9,7 +9,6 @@ public class Weapon : MonoBehaviour
 
 
 
-    private DataBase dataBase;
     private Transform shootPoint;
     private BulletPool bulletPool;
     private AudioSource audioSource;
@@ -23,9 +22,6 @@ public class Weapon : MonoBehaviour
         audioSource= GetComponent<AudioSource>();
         shootinAnimation= GetComponent<Animator>();
 
-        dataBase = Resources.Load("GameDataBase", typeof(ScriptableObject)) as DataBase;
-        bulletPool = GameObject.FindGameObjectWithTag("BulletPool").GetComponent<BulletPool>();
-        shootPoint = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Transform>();
     }
 
     

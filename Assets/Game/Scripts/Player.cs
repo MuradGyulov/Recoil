@@ -13,31 +13,54 @@ public class Player : MonoBehaviour
         MiniGun
     }
     [SerializeField] private WeaponSelection weaponSelection;
+
     [Space(50)]
 
-    [SerializeField] private DataBase dataBase;
     [SerializeField] private Rigidbody rigidBody;
-    [SerializeField] private Transform shootPoint;
-    [SerializeField] private BulletPool bulletPool;
     [SerializeField] private ParticlePool particlePool;
-    [SerializeField] private Animator shootingAnimator;
     [SerializeField] private AudioSource playerAudioSource;
-    [SerializeField] private AudioSource weaponAudioSource;
+    [SerializeField] private AssaultRifle assaultRifleScript;
+    [SerializeField] private ShootGun shootGunScripts;
+
+    [Space(50)]
+
+    [SerializeField] private GameObject assaultRifle;
+    [SerializeField] private GameObject sniperRifle;
+    [SerializeField] private GameObject shootGun;
+    [SerializeField] private GameObject miniGun;
 
     private bool tv;
     private bool mobile;
     private bool desctop;
     private bool gameStarted;
     private bool playerOnGround;
-
-    private float nextFire;
-
-
+   
 
     private void Start()
     {
         desctop = true;
         gameStarted = true;
+
+        ActivateGun();
+    }
+
+    private void ActivateGun()
+    {
+        switch (weaponSelection)
+        {
+            case WeaponSelection.AssaultRifle:
+                assaultRifle.SetActive(true);
+                break;
+            case WeaponSelection.SniperRifle:
+                sniperRifle.SetActive(true);
+                break;
+            case WeaponSelection.ShootGun:
+                shootGun.SetActive(true);
+                break;
+            case WeaponSelection.MiniGun:
+                miniGun.SetActive(true);
+                break;
+        }
     }
 
     private void FixedUpdate()
@@ -46,43 +69,34 @@ public class Player : MonoBehaviour
         {
             if (desctop && Input.GetMouseButton(0))
             {
-                Shooting();
                 StopRotation();
+                Shooting();
             }
             else if (mobile && Input.touchCount > 0)
             {
-                Shooting();
                 StopRotation();
+                Shooting();
+
             }
             else if (tv)
             {
-                Shooting();
                 StopRotation();
+                Shooting();
             }
         }
     }
 
-    public void Shooting()
+    private void Shooting()
     {
-        if (Time.time > nextFire)
+        switch (weaponSelection)
         {
-            nextFire = Time.time + dataBase.fireRate;
-
-            GameObject bullet = bulletPool.GetPooledBullet();
-            shootPoint.localEulerAngles = shootPoint.forward * Random.Range(dataBase.spread, -dataBase.spread);
-            bullet.transform.position = shootPoint.transform.position;
-            bullet.transform.rotation = shootPoint.transform.rotation;
-            bullet.SetActive(true);
-            shootingAnimator.SetTrigger("Shoot");
-            weaponAudioSource.PlayOneShot(dataBase.assaultRifleShootingSound);
-
-            GunRecoil();
+            case WeaponSelection.AssaultRifle:
+                assaultRifleScript.Shoot();
+                break;
+            case WeaponSelection.ShootGun:
+                shootGunScripts.Shoot();
+                break;
         }
-    }
-
-    private void GunRecoil()
-    {
-        rigidBody.AddForce(-transform.right * dataBase.recoil, ForceMode.Impulse);
     }
 
     private void StopRotation()
@@ -98,7 +112,7 @@ public class Player : MonoBehaviour
         playerOnGround = true;
 
         playerAudioSource.volume = collision.impulse.magnitude * 0.01f;
-        playerAudioSource.PlayOneShot(dataBase.floor);
+        playerAudioSource.Play();
 
         ContactPoint contactPoint = collision.contacts[0];
         GameObject ps = particlePool.GetPooledParticle();
