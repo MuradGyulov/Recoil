@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using YG;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private int lastLevelIndex;
+
     private GameObject[] enemyesPool;
     private int enemyesNumber;
 
@@ -32,6 +35,21 @@ public class GameManager : MonoBehaviour
     {
         GameObject mainCanvasObject = GameObject.FindGameObjectWithTag("MainCanvas");
         MainCanvas mainCanvasScript = mainCanvasObject.GetComponent<MainCanvas>();
-        mainCanvasScript.OpenSuccessMenu();
+
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int completedLevels = YandexGame.savesData.savesCompletedLevels;
+
+        if(currentSceneIndex >= lastLevelIndex)
+        {
+            YandexGame.savesData.savesCompletedLevels = lastLevelIndex;
+            YandexGame.SaveProgress();
+            mainCanvasScript.OpenTheEndMenu();
+        }
+        else
+        {
+            YandexGame.savesData.savesCompletedLevels = currentSceneIndex + 1;
+            YandexGame.SaveProgress();
+            mainCanvasScript.OpenSuccessMenu();
+        }
     }
 }

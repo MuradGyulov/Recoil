@@ -159,13 +159,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Music Icon
+      name: Sounds ON Icon
       rect:
         serializedVersion: 2
-        x: 169
-        y: 358
-        width: 7
-        height: 10
+        x: 112
+        y: 352
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,27 +175,6 @@ TextureImporter:
       bones: []
       spriteID: 5fee7da8ec27fe746ace6ff6b98942c3
       internalID: -165917686
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sounds Icon
-      rect:
-        serializedVersion: 2
-        x: 161
-        y: 358
-        width: 7
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a5aad8bb2160c6646839b4be0ba44bee
-      internalID: -593756674
       vertices: []
       indices: 
       edges: []
@@ -285,48 +264,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shield Icon
-      rect:
-        serializedVersion: 2
-        x: 137
-        y: 352
-        width: 14
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d98c021f42e40b7499a62f2facf59d02
-      internalID: 1864521962
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Video Icon
-      rect:
-        serializedVersion: 2
-        x: 125
-        y: 357
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4d4581cef033c2a42a0baf8ab9667c55
-      internalID: -1930820462
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Settings Icon
       rect:
         serializedVersion: 2
@@ -364,48 +301,6 @@ TextureImporter:
       bones: []
       spriteID: fd0fea23db8ae1944a5cfe92ef43f862
       internalID: 587465588
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Shoop Icon
-      rect:
-        serializedVersion: 2
-        x: 101
-        y: 354
-        width: 23
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 624a9571447635447a3fc8ee13c1cfb8
-      internalID: 410089200
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Review Icon
-      rect:
-        serializedVersion: 2
-        x: 84
-        y: 353
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e6f4b130c97ad2d4ea8304d035992ac3
-      internalID: -2016526225
       vertices: []
       indices: 
       edges: []
@@ -453,13 +348,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Whide Button
+      name: Sounds OFF Icon
       rect:
         serializedVersion: 2
-        x: 53
-        y: 383
-        width: 85
-        height: 15
+        x: 112
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -467,8 +362,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d190bcb25a81ca24b93bd4e2ea7edcae
-      internalID: -1785302299
+      spriteID: e2a612e73d614104e8ff81d38f6797dd
+      internalID: -1831806030
       vertices: []
       indices: 
       edges: []
@@ -489,7 +384,6 @@ TextureImporter:
       Home Icon: 1998923061
       Huge Button: 243336129
       Menu: 2000181117
-      Music Icon: -165917686
       Panel: -1645853380
       Pause Icon: 806940628
       Play Icon: 1263100015
@@ -499,8 +393,8 @@ TextureImporter:
       Shield Icon: 1864521962
       Shoop Icon: 410089200
       Small Button: 443833402
-      Sounds Icon: -593756674
-      Sounds ON: 1761159153
+      Sounds OFF Icon: -1831806030
+      Sounds ON Icon: -165917686
       Video Icon: -1930820462
       Whide Button: 799005815
   spritePackingTag: 

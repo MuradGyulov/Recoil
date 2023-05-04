@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor;
 
 #if UNITY_EDITOR
 using System.Collections;
@@ -56,9 +55,8 @@ namespace YG
             else
             {
 #if UNITY_EDITOR
-                GameObject ygPrefab = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/YandexGame/Prefabs/YandexGame.prefab", typeof(GameObject));
-                yg = ygPrefab.GetComponent<YandexGame>();
-                return yg.infoYG;
+                InfoYG infoYGFromConfig = Insides.ConfigYG.GetInfoYG();
+                return infoYGFromConfig;
 #else
                 return null;
 #endif
@@ -260,6 +258,8 @@ namespace YG
 
             try
             {
+              //  JArray jsonArray = JArray.Parse(response);
+               // response = jsonArray[0][0][0].ToString();
             }
             catch
             {

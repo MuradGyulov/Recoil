@@ -11,6 +11,7 @@ TagManager:
   - Bacteria
   - GameManager
   - MainCanvas
+  - GameCamera
   layers:
   - Default
   - TransparentFX

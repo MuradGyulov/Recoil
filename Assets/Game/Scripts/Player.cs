@@ -5,31 +5,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    enum WeaponSelection
-    {
-        AssaultRifle,
-        SniperRifle,
-        ShootGun,
-        MiniGun
-    }
-    [SerializeField] private WeaponSelection weaponSelection;
-
-    [Space(50)]
-
     [SerializeField] private Rigidbody rigidBody;
     [SerializeField] private ParticlePool particlePool;
     [SerializeField] private AudioSource playerAudioSource;
-    [SerializeField] private AssaultRifle assaultRifleScript;
-    [SerializeField] private ShootGun shootGunScripts;
+    [SerializeField] private AssaultRifle assaultRifle;
 
-    [Space(50)]
-
-    [SerializeField] private GameObject assaultRifle;
-    [SerializeField] private GameObject sniperRifle;
-    [SerializeField] private GameObject shootGun;
-    [SerializeField] private GameObject miniGun;
-
-    private bool tv;
     private bool mobile;
     private bool desctop;
     private bool gameStarted;
@@ -40,27 +20,6 @@ public class Player : MonoBehaviour
     {
         desctop = true;
         gameStarted = true;
-
-        ActivateGun();
-    }
-
-    private void ActivateGun()
-    {
-        switch (weaponSelection)
-        {
-            case WeaponSelection.AssaultRifle:
-                assaultRifle.SetActive(true);
-                break;
-            case WeaponSelection.SniperRifle:
-                sniperRifle.SetActive(true);
-                break;
-            case WeaponSelection.ShootGun:
-                shootGun.SetActive(true);
-                break;
-            case WeaponSelection.MiniGun:
-                miniGun.SetActive(true);
-                break;
-        }
     }
 
     private void FixedUpdate()
@@ -70,32 +29,13 @@ public class Player : MonoBehaviour
             if (desctop && Input.GetMouseButton(0))
             {
                 StopRotation();
-                Shooting();
+                assaultRifle.Shoot();
             }
             else if (mobile && Input.touchCount > 0)
             {
                 StopRotation();
-                Shooting();
-
+                assaultRifle.Shoot();
             }
-            else if (tv)
-            {
-                StopRotation();
-                Shooting();
-            }
-        }
-    }
-
-    private void Shooting()
-    {
-        switch (weaponSelection)
-        {
-            case WeaponSelection.AssaultRifle:
-                assaultRifleScript.Shoot();
-                break;
-            case WeaponSelection.ShootGun:
-                shootGunScripts.Shoot();
-                break;
         }
     }
 
@@ -105,6 +45,18 @@ public class Player : MonoBehaviour
         {
             rigidBody.angularVelocity = Vector3.zero;
         }
+    }
+
+    public void Paused()
+    {
+        gameStarted = false;
+        rigidBody.isKinematic = true;
+    }
+
+    public void Resume()
+    {
+        gameStarted = true;
+        rigidBody.isKinematic = false;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -123,17 +75,5 @@ public class Player : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         playerOnGround = false;
-    }
-
-    public void Paused()
-    {
-        gameStarted = false;
-        rigidBody.isKinematic = true;
-    }
-
-    public void Resume()
-    {
-        gameStarted = true;
-        rigidBody.isKinematic = false;
     }
 }

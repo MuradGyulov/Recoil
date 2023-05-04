@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using UnityEngine.UI;
 using YG;
 
 public class MainCanvas : MonoBehaviour
@@ -14,11 +15,40 @@ public class MainCanvas : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject gameMenu;
     [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private GameObject defeatMenu;
     [SerializeField] private GameObject succesMenu;
     [SerializeField] private GameObject levelsMenu;
     [SerializeField] private GameObject allGamesMenu;
+    [SerializeField] private GameObject gameEndMenu;
 
+    [Space(30)]
+
+    [SerializeField] private Sprite sounds_ON_Icon;
+    [SerializeField] private Sprite sounds_OFF_Icon;
+
+    [Space(30)]
+
+    [SerializeField] private Image soundsButtonIcon;
+
+    [Space(30)]
+
+    [SerializeField] private GameObject[] levelsButtons;
+
+
+    private void OnEnable() => YandexGame.GetDataEvent += GetData;
+    private void OnDisable() => YandexGame.GetDataEvent -= GetData;
+
+    private void Awake()
+    {
+        if (YandexGame.SDKEnabled == true)
+        {
+            GetData();
+        }
+    }
+
+    public void GetData()
+    {
+        ActivateCompletedLevelsButtons();
+    }
 
     private void Start()
     {
@@ -41,6 +71,7 @@ public class MainCanvas : MonoBehaviour
 
     public void btn_OpenLevelsMenu()
     {
+        ActivateCompletedLevelsButtons();
         GetObjectComponent(mainMenu).SetTrigger("HideMenu");
         GetObjectComponent(levelsMenu).SetTrigger("ShowMenu");
     }
@@ -49,6 +80,35 @@ public class MainCanvas : MonoBehaviour
     {
         GetObjectComponent(levelsMenu).SetTrigger("HideMenu");
         GetObjectComponent(mainMenu).SetTrigger("ShowMenu");
+    }
+
+    private void ActivateCompletedLevelsButtons()
+    {
+        int completedLevels = YandexGame.savesData.savesCompletedLevels;
+
+        for (int i = 0; i < completedLevels; i++)
+        {
+            levelsButtons[i].GetComponent<Image>().color = new Color32(255, 255, 213, 255);
+            levelsButtons[i].GetComponent<Button>().interactable = true;
+        }
+    }
+
+    public void btn_OffSounds()
+    {
+        if(AudioListener.volume == 1)
+        {
+            AudioListener.volume = 0;
+            soundsButtonIcon.sprite = sounds_OFF_Icon;
+            YandexGame.savesData.savesSoundsIsON = false;
+            YandexGame.SaveProgress();
+        }
+        else if(AudioListener.volume == 0)
+        {
+            AudioListener.volume = 1;
+            soundsButtonIcon.sprite = sounds_ON_Icon;
+            YandexGame.savesData.savesSoundsIsON = true;
+            YandexGame.SaveProgress();
+        }
     }
 
     public void OpenAllGamesMenu()
@@ -98,6 +158,13 @@ public class MainCanvas : MonoBehaviour
         Time.timeScale = 0;
     }
 
+    public void OpenTheEndMenu()
+    {
+        GetObjectComponent(gameMenu).SetTrigger("HideMenu");
+        GetObjectComponent(gameEndMenu).SetTrigger("ShowMenu");
+        Time.timeScale = 0;
+    }
+
     public void btn_RestartLevel(GameObject menu)
     {
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -106,9 +173,6 @@ public class MainCanvas : MonoBehaviour
         {
             case "PauseMenu":
                 StartCoroutine(LoadLevelAsync(sceneIndex, pauseMenu, gameMenu));
-                break;
-            case "DefeatMenu":
-                StartCoroutine(LoadLevelAsync(sceneIndex, defeatMenu, gameMenu));
                 break;
             case "SuccessMenu":
                 StartCoroutine(LoadLevelAsync(sceneIndex, succesMenu, gameMenu));
@@ -125,11 +189,11 @@ public class MainCanvas : MonoBehaviour
             case "PauseMenu":
                 StartCoroutine(LoadLevelAsync(0, pauseMenu, mainMenu));
                 break;
-            case "DefeatMenu":
-                StartCoroutine(LoadLevelAsync(0, defeatMenu, mainMenu));
-                break;
             case "SuccessMenu":
                 StartCoroutine(LoadLevelAsync(0, succesMenu, mainMenu));
+                break;
+            case "GameEndMenu":
+                StartCoroutine(LoadLevelAsync(0, gameEndMenu, mainMenu));
                 break;
         }
 
