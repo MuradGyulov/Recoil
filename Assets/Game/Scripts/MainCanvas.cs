@@ -28,6 +28,7 @@ public class MainCanvas : MonoBehaviour
     [Space(30)]
 
     [SerializeField] private Image soundsButtonIcon;
+    [SerializeField] private Text levelIndexIndicator;
 
     [Space(30)]
 
@@ -48,6 +49,7 @@ public class MainCanvas : MonoBehaviour
     public void GetData()
     {
         ActivateCompletedLevelsButtons();
+        UpdateSoundsSettings();
     }
 
     private void Start()
@@ -90,6 +92,20 @@ public class MainCanvas : MonoBehaviour
         {
             levelsButtons[i].GetComponent<Image>().color = new Color32(255, 255, 213, 255);
             levelsButtons[i].GetComponent<Button>().interactable = true;
+        }
+    }
+
+    private void UpdateSoundsSettings()
+    {
+        if (YandexGame.savesData.savesSoundsIsON)
+        {
+            AudioListener.volume = 1;
+            soundsButtonIcon.sprite = sounds_ON_Icon;
+        }
+        else
+        {
+            AudioListener.volume = 0;
+            soundsButtonIcon.sprite = sounds_OFF_Icon;
         }
     }
 

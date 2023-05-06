@@ -45,10 +45,14 @@ public class GameManager : MonoBehaviour
             YandexGame.SaveProgress();
             mainCanvasScript.OpenTheEndMenu();
         }
-        else
+        else if (currentSceneIndex >= completedLevels)
         {
             YandexGame.savesData.savesCompletedLevels = currentSceneIndex + 1;
             YandexGame.SaveProgress();
+            mainCanvasScript.OpenSuccessMenu();
+        }
+        else if(currentSceneIndex < completedLevels)
+        {
             mainCanvasScript.OpenSuccessMenu();
         }
     }
