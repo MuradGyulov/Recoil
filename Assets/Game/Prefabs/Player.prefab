@@ -68,7 +68,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 201754149742483459}
-  - {fileID: 9105264808882718343}
   - {fileID: 5747845530590741948}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -5026,7 +5025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 4828842604500323251}
-  particlePool: {fileID: 5319603065207827323}
+  particlePool: {fileID: 0}
   playerAudioSource: {fileID: 4221547114886035380}
   assaultRifle: {fileID: 8100493796619429544}
 --- !u!199 &4664184025907085759
@@ -5101,52 +5100,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!1 &2350395306982496279
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9105264808882718343}
-  - component: {fileID: 5319603065207827323}
-  m_Layer: 0
-  m_Name: ParticlePool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9105264808882718343
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2350395306982496279}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2104044830548837844}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5319603065207827323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2350395306982496279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fea4d4fe54601b4db4f256f3aa771b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ammountInParticlesPool: 5
-  particlePrefab: {fileID: 6569458163054527373, guid: f1e057fd2f070254dbd5dd91132f702b, type: 3}
 --- !u!1 &4221547113318584906
 GameObject:
   m_ObjectHideFlags: 0
@@ -5267,7 +5220,7 @@ Transform:
   - {fileID: 4221547113318584909}
   - {fileID: 8998336568800680487}
   m_Father: {fileID: 2104044830548837844}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8677214494031776281
 MeshFilter:
@@ -5499,5 +5452,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b884678df244f849b9264287443fd47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammountInBulletsPool: 50
+  ammountInBulletsPool: 20
   bulletPrefab: {fileID: 5638281615553765150, guid: 4c60d1c69a6a4c94e80c8f9c759f54aa, type: 3}

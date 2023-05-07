@@ -6,7 +6,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Rigidbody rigidBody;
-    [SerializeField] private ParticlePool particlePool;
     [SerializeField] private AudioSource playerAudioSource;
     [SerializeField] private AssaultRifle assaultRifle;
 
@@ -58,20 +57,12 @@ public class Player : MonoBehaviour
         gameStarted = true;
         rigidBody.isKinematic = false;
     }
-
     private void OnCollisionEnter(Collision collision)
     {
         playerOnGround = true;
-
         playerAudioSource.volume = collision.impulse.magnitude * 0.01f;
         playerAudioSource.Play();
-
-        ContactPoint contactPoint = collision.contacts[0];
-        GameObject ps = particlePool.GetPooledParticle();
-        ps.transform.position = contactPoint.point;
-        ps.SetActive(true);
     }
-
     private void OnCollisionExit(Collision collision)
     {
         playerOnGround = false;
