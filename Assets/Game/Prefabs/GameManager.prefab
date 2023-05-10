@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e753cb1283cc54498d5db479793d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastLevelIndex: 20
+  lastLevelIndex: 120

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454381519381030394}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.406, y: 0.035000026, z: 0}
+  m_LocalPosition: {x: 0.406, y: 0.035, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5025,7 +5025,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 4828842604500323251}
-  particlePool: {fileID: 0}
   playerAudioSource: {fileID: 4221547114886035380}
   assaultRifle: {fileID: 8100493796619429544}
 --- !u!199 &4664184025907085759
