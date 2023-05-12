@@ -1,10 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using YG;
 
 public class DontDestroy : MonoBehaviour
 {
     private static DontDestroy dontDestroy;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            YandexGame.savesData.savesCompletedLevels = 122;
+            YandexGame.SaveProgress();
+        }
+    }
 
     private void Start()
     {

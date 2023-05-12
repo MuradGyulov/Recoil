@@ -1,10 +1,6 @@
-using System;
 using UnityEngine;
-using UnityEngine.Events;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
-using UnityEditor;
 using UnityEngine.UI;
 using YG;
 
@@ -19,19 +15,13 @@ public class MainCanvas : MonoBehaviour
     [SerializeField] private GameObject levelsMenu;
     [SerializeField] private GameObject allGamesMenu;
     [SerializeField] private GameObject gameEndMenu;
-
     [Space(30)]
-
     [SerializeField] private Sprite sounds_ON_Icon;
     [SerializeField] private Sprite sounds_OFF_Icon;
-
     [Space(30)]
-
     [SerializeField] private Image soundsButtonIcon;
     [SerializeField] private Text levelIndexIndicator;
-
     [Space(30)]
-
     [SerializeField] private GameObject[] levelsButtons;
 
 
@@ -50,38 +40,6 @@ public class MainCanvas : MonoBehaviour
     {
         ActivateCompletedLevelsButtons();
         UpdateSoundsSettings();
-    }
-
-    private void Start()
-    {
-        DontDestroy();
-    }
-
-    private void DontDestroy()
-    {
-        DontDestroyOnLoad(this);
-
-        if (mainCanvas == null) 
-        {
-            mainCanvas = this;
-        }
-        else 
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    public void btn_OpenLevelsMenu()
-    {
-        ActivateCompletedLevelsButtons();
-        GetObjectComponent(mainMenu).SetTrigger("HideMenu");
-        GetObjectComponent(levelsMenu).SetTrigger("ShowMenu");
-    }
-
-    public void btn_CloseLevelsMenu()
-    {
-        GetObjectComponent(levelsMenu).SetTrigger("HideMenu");
-        GetObjectComponent(mainMenu).SetTrigger("ShowMenu");
     }
 
     private void ActivateCompletedLevelsButtons()
@@ -125,6 +83,19 @@ public class MainCanvas : MonoBehaviour
             YandexGame.savesData.savesSoundsIsON = true;
             YandexGame.SaveProgress();
         }
+    }
+
+    public void btn_OpenLevelsMenu()
+    {
+        ActivateCompletedLevelsButtons();
+        GetObjectComponent(mainMenu).SetTrigger("HideMenu");
+        GetObjectComponent(levelsMenu).SetTrigger("ShowMenu");
+    }
+
+    public void btn_CloseLevelsMenu()
+    {
+        GetObjectComponent(levelsMenu).SetTrigger("HideMenu");
+        GetObjectComponent(mainMenu).SetTrigger("ShowMenu");
     }
 
     public void OpenAllGamesMenu()
