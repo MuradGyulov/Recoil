@@ -20,7 +20,6 @@ public class MainCanvas : MonoBehaviour
     [SerializeField] private Sprite sounds_OFF_Icon;
     [Space(30)]
     [SerializeField] private Image soundsButtonIcon;
-    [SerializeField] private Text levelIndexIndicator;
     [Space(30)]
     [SerializeField] private GameObject[] levelsButtons;
 
