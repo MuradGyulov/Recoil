@@ -34472,7 +34472,6 @@ GameObject:
   - component: {fileID: 3648436854097689575}
   - component: {fileID: 3648436854097689573}
   - component: {fileID: 3648436854097689572}
-  - component: {fileID: 5063917544111650605}
   m_Layer: 5
   m_Name: text_TitleShadow
   m_TagString: Untagged
@@ -34530,32 +34529,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: f6ef34bbd97b2aa4c8f6586e79be6952, type: 3}
-    m_FontSize: 185
+    m_FontSize: 180
     m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 185
+    m_MaxSize: 180
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SHOOTER
---- !u!114 &5063917544111650605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3648436854097689574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abee2600a340d494ca1623db83ab1353, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ruTextVersion: "\u0421\u0422\u0420\u0415\u041B\u041E\u041A"
-  enTextVersion: SHOOTER
+  m_Text: RECOIL
 --- !u!1 &3648436854155238848
 GameObject:
   m_ObjectHideFlags: 0
@@ -36234,7 +36219,6 @@ GameObject:
   - component: {fileID: 3648436854679424382}
   - component: {fileID: 3648436854679424380}
   - component: {fileID: 3648436854679424383}
-  - component: {fileID: 6061454669546976374}
   m_Layer: 5
   m_Name: text_Title
   m_TagString: Untagged
@@ -36292,32 +36276,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: f6ef34bbd97b2aa4c8f6586e79be6952, type: 3}
-    m_FontSize: 185
+    m_FontSize: 180
     m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 185
+    m_MaxSize: 180
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SHOOTER
---- !u!114 &6061454669546976374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3648436854679424377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abee2600a340d494ca1623db83ab1353, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ruTextVersion: "\u0421\u0422\u0420\u0415\u041B\u041E\u041A"
-  enTextVersion: SHOOTER
+  m_Text: RECOIL
 --- !u!1 &3648436854787028444
 GameObject:
   m_ObjectHideFlags: 0
