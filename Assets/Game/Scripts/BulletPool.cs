@@ -33,13 +33,6 @@ public class BulletPool : MonoBehaviour
             }
         }
 
-        return CreateMoreBullets();
-    }
-
-    private GameObject CreateMoreBullets()
-    {
-        GameObject bulletInstace = Instantiate(bulletPrefab);
-        bulletsLIst.Add(bulletInstace);
-        return bulletInstace;
+        return null;
     }
 }

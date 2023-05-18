@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AssaultRifle : MonoBehaviour
@@ -16,7 +14,6 @@ public class AssaultRifle : MonoBehaviour
 
     private float nextFire;
 
-
     public void Shoot()
     {
         if (Time.time > nextFire)
@@ -31,7 +28,6 @@ public class AssaultRifle : MonoBehaviour
 
             weaponAnimator.SetTrigger("Shoot");
             weaponAudioSource.Play();
-
             GunRecoil();
         }
     }

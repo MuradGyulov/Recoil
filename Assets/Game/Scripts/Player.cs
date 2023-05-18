@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
 
     private bool gameStarted = true;
     private bool playerOnGround = true;
-   
 
     private void FixedUpdate()
     {

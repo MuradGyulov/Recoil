@@ -33720,6 +33720,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1197376833815770637, guid: f53e54186d9c4b1489ffc9e0760158c2, type: 3}
   m_PrefabInstance: {fileID: 766053308}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &766547135 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3165529781264987302, guid: dc213d83db0e6484d825ff2f1da1b21b, type: 3}
+  m_PrefabInstance: {fileID: 4815006785438568414}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05b52aa9f22838a4ca7c871163b2ba77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &769968033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94587,6 +94598,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5646925342407034288, guid: dc213d83db0e6484d825ff2f1da1b21b, type: 3}
+      propertyPath: ammountInBulletsPool
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100493796619429544, guid: dc213d83db0e6484d825ff2f1da1b21b, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 766547135}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc213d83db0e6484d825ff2f1da1b21b, type: 3}
 --- !u!1001 &8635991814789487313
